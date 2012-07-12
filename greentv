@@ -28,7 +28,6 @@ for i in 'TF1' '\"France 2\"' 'France 3' 'France 5' 'Arte' '\"M6\"' 'Direct 8' '
 
 # sort with --uniq option
 cat liste | sort --uniq > temp
-cat temp
 cat temp | sed 's/."programs"//g' > liste
 sed -i '/^name/!d' liste
 #rm temp
