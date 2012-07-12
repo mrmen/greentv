@@ -19,7 +19,13 @@ fi
 
 echo ":: parse the list to get name and channel"
 # parse the list to get name and channel
-cat $LIST | sed 's/useUrlSigning/æ/g' | tr 'æ' '\n' | sed 's/.*"name"://g; s/\("[a-zA-Z0-9 ]*"\)\(.*channelId":\)\([0-9]*\)\(.*\)/\1 \3/g;' > $AVAIL_LIST
+# old version not working anymore
+#cat $LIST | sed 's/useUrlSigning/æ/g' | tr 'æ' '\n' | sed 's/.*"name"://g; s/\("[a-zA-Z0-9 ]*"\)\(.*channelId":\)\([0-9]*\)\(.*\)/\1 \3/g;' > $AVAIL_LIST
+
+#cat $LIST | sed 's/name/æ name/g' | tr 'æ' '\n' | sed 's/.*"name"://g; s/\("[a-zA-Z0-9 ]*"\)\(.*channelId":\)\([0-9]*\)\(.*\)/\1 \3/g;' > $AVAIL_LIST
+cat liste.json | sed -e 's/name/œname/g' | tr 'œ' '\n' | sed 's/.*"name"://g; s/\("[a-zA-Z0-9 ]*"\)\(.*channelId":\)\([0-9]*\)\(.*\)/\1 \3/g;' > $AVAIL_LIST
+
+sed -i '/[0-9]$/!d' $AVAIL_LIST
 
 echo ":: create filter for choosing your channel : only tnt"
 # create filter for choosing your channel : only tnt
@@ -28,9 +34,10 @@ for i in 'TF1' '\"France 2\"' 'France 3' 'France 5' 'Arte' '\"M6\"' 'Direct 8' '
 
 # sort with --uniq option
 cat liste | sort --uniq > temp
-cat temp
+#cat temp
 cat temp | sed 's/."programs"//g' > liste
-rm temp
+sed -i 's/name"/name/g' liste
+#rm temp
 MAX=$(wc -l liste | awk '{print $1}')
 
 # clear 
