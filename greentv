@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function usage (){
+    echo "Usage of "$0" :"
+    echo " "$0" package"
+    echo "Give one argument (name of an aur package) to this script and it will let you"
+    echo " know more about its infos."
+    echo ""
+    echo "Actually nothing work at the moment"
+    echo "It's a dev version"
+}
+
+
+
 LIST=liste.json
 AVAIL_LIST=chaine
 
