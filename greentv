@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+#
+# Created by MrMen <tetcheve at gmail dot com>
+# First time Edited on 02-01-2012
+#
+# Time-stamp: <29-03-2013 12:09:39>
+# 
+
 
 function usage (){
     echo "Usage of "$0" :"
